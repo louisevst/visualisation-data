@@ -15,7 +15,25 @@ let countries = [];
 for (var i = 2; i < table1.rows.length; i++) {
   countries.push(table1.rows[i].cells[1].innerHTML);
 }
+
 //stats for belgium in the order of year
+function addAllDataCoutries(emptyArray, rowNumber) {
+  for (var i = 2; i < table1.rows[1].cells.length; i++) {
+    let x = table1.rows[rowNumber].cells[i].innerHTML;
+    console.log(x);
+    x = x.replace(",", ".");
+    x = Number(x);
+    emptyArray.push(x);
+  }
+}
+let newCountry = [];
+console.log(table1.rows.length);
+
+for (var i = 2; i < table1.rows.length; i++) {
+  addAllDataCoutries(newCountry, i);
+}
+
+console.log(newCountry);
 let Belgium = [];
 for (var i = 2; i < table1.rows[2].cells.length; i++) {
   let x = table1.rows[2].cells[i].innerHTML;
@@ -354,8 +372,6 @@ const data = {
   datasets: allData,
 };
 
-//new Chart("myChart", config);
-
 const canvas = document.createElement("canvas");
 new Chart(canvas, {
   type: "line",
@@ -374,63 +390,7 @@ new Chart(canvas, {
 table1.parentNode.insertBefore(canvas, table1);
 
 //2eme graph
-/*
-const table2 = document.getElementById("table2");
-console.log(table2);
-const year1 = table2.rows[0].cells[2].innerHTML;
-const year2 = table2.rows[0].cells[3].innerHTML;
 
-console.log(table2.rows[1].cells[2]);
-console.log(table2.rows[2].cells[2]);
-
-function createArrayObject(length, array) {
-  for (let i = 0; i < length; i++) {
-    array.push({ label: [], data: [] });
-  }
-  return array;
-}
-//les pays
-let coutries2 = [];
-for (let i = 1; i < table2.rows.length; i++) {
-  coutries2.push(table2.rows[i].cells[1].innerHTML);
-}
-
-let table2Object = [];
-createArrayObject(coutries2.length, table2Object);
-
-//le premier élement c'est l'année puis le taux de crime
-for (let i = 0; i < table2.rows.length; i++) {
-  if (i === 0) {
-    table2Object.forEach((element) =>
-      element.label.push(table2.rows[0].cells[2].innerHTML)
-    );
-  } else {
-    table2Object[i - 1].data.push(table2.rows[i].cells[2].innerHTML);
-  }
-}
-//le premier élement c'est l'année puis le taux de crime année 2
-for (let i = 0; i < table2.rows.length; i++) {
-  if (i === 0) {
-    table2Object.forEach((element) =>
-      element.label.push(table2.rows[0].cells[3].innerHTML)
-    );
-  } else {
-    table2Object[i - 1].data.push(table2.rows[i].cells[3].innerHTML);
-  }
-}
-console.log(table2Object);
-const canvas2 = document.createElement("canvas");
-const data2 = {
-  labels: coutries2,
-  datasets: table2Object,
-};
-console.log(data);
-console.log(data2);
-new Chart(canvas2, {
-  type: "bar",
-  data: data2,
-});
-table2.parentNode.insertBefore(canvas2, table2);*/
 const table2 = document.getElementById("table2");
 
 const year1 = table2.rows[0].cells[2].innerHTML;
@@ -471,111 +431,12 @@ new Chart(canvas2, {
 });
 table2.parentNode.insertBefore(canvas2, table2);
 //fetch
-/*
-async function getData() {
-  const response = await fetch(
-    "https://canvasjs.com/services/data/datapoints.php"
-  );
-  const data = await response.json();
-  console.log(data);
-}
-getData();*/
 
 const firstHeading = document.getElementById("firstHeading");
 const canvas3 = document.createElement("canvas");
 canvas3.setAttribute("id", "chartContainer");
 firstHeading.parentNode.insertBefore(canvas3, firstHeading);
-/*
-var dataPoints = [];
-var chart;
-fetch("https://canvasjs.com/services/data/datapoints.php")
-  .then((response) => response.json())
-  .then((data) => {
-    for (var i = 0; i < data.length; i++) {
-      dataPoints.push({ x: data[i][0], y: parseInt(data[i][1]) });
-    }
 
-    chart = new Chart(canvas3, {
-      type: "line",
-      data: {
-        labels: dataPoints.map((d) => d.x),
-        datasets: [
-          {
-            label: "Live Chart with dataPoints from External JSON",
-            data: dataPoints.map((d) => d.y),
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgba(255, 99, 132, 1)",
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {},
-    });
-    updateChart();
-  });
-
-function updateChart() {
-  fetch(
-    "https://canvasjs.com/services/data/datapoints.php" +
-      (dataPoints.length + 1) +
-      "&ystart=" +
-      dataPoints[dataPoints.length - 1].y +
-      "&length=1&type=json"
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      for (var i = 0; i < data.length; i++) {
-        dataPoints.push({ x: data[i][0], y: parseInt(data[i][1]) });
-      }
-      chart.update();
-      setTimeout(function () {
-        updateChart();
-      }, 1000);
-    });
-}*/
-/*
-window.onload = function () {
-  var dataPoints = [];
-  var chart;
-  fetch("https://canvasjs.com/services/data/datapoints.php")
-    .then((response) => response.json())
-    .then((data) => {
-      for (var i = 0; i < data.length; i++) {
-        dataPoints.push({ x: data[i][0], y: parseInt(data[i][1]) });
-      }
-      chart = new Chart(canvas3, {
-        type: "line",
-        data: {
-          labels: dataPoints.map((d) => d.x),
-          datasets: [
-            {
-              label: "Live Chart with dataPoints from External JSON",
-              data: dataPoints.map((d) => d.y),
-              backgroundColor: "rgba(255, 99, 132, 0.2)",
-              borderColor: "rgba(255, 99, 132, 1)",
-              borderWidth: 1,
-            },
-          ],
-        },
-        options: {},
-      });
-      updateChart();
-    });
-
-  function updateChart() {
-    fetch("https://canvasjs.com/services/data/datapoints.php")
-      .then((response) => response.json())
-      .then((data) => {
-        for (var i = 0; i < data.length; i++) {
-          dataPoints.push({ x: data[i][0], y: parseInt(data[i][1]) });
-        }
-        chart.update();
-        setTimeout(function () {
-          updateChart();
-        }, 1000);
-      });
-  }
-};*/
 window.onload = function () {
   var dataPoints = [];
   var chart;
