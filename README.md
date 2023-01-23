@@ -6,6 +6,10 @@ Two graphes had to be done with the html tables in the index.html. We couldn't t
 
 The third graph had to refresh every seconds and was done with an external page containing data points.
 
+## See it live
+
+You can click [here](https://louisevst.github.io/visualisation-data/) to see it live !
+
 ## Tech Used
 
 - JavaScript
