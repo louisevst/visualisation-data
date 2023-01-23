@@ -15,6 +15,7 @@ You can click [here](https://louisevst.github.io/visualisation-data/) to see it 
 - JavaScript
 - pnpm
 - vite
+- chart js
 
 ## Develop
 
