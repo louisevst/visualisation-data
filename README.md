@@ -10,6 +10,8 @@ The third graph had to refresh every seconds and was done with an external page 
 
 You can click [here](https://louisevst.github.io/visualisation-data/) to see it live !
 
+![screenshot](https://github.com/louisevst/visualisation-data/blob/main/public/screenshot.png?raw=true)
+
 ## Tech Used
 
 - JavaScript
